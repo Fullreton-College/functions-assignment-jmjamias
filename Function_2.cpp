@@ -38,11 +38,32 @@ int main()
 
 int accept_money()
 {
-  //write your code
+  int total = 0;  //tracks total cents inserted so far
+  int coin;       //stores each coin value entered
+
+  cout << "Enter coins (100 = dollar, 25 = quarter, 10 = dime, 5 = nickel)" << endl;
+
+  while (total < TWINKIE_PRICE) {
+    cout << "Insert coin: ";  //keep asking until enough money
+    cin >> coin;            //read coin from user
+
+    if (coin == 100 || coin == 25 || 
+        coin == 10 || coin == 5) {          //validate coin denomination
+          total += coin;                  // add coin to total
+          cout << "Total inserted: $"
+               << total/100.0 << endl;      //show running total
+        } else {
+          cout << "Invalid coin. Please enter "
+               << "100, 25, 10, or 5." << endl;     //reject invalid coins
+
+        }
+  }
+
+    return total;       //return final total
 }
 
 int compute_change(int total_paid) 
 {
-//write your code
+  return total_paid - TWINKIE_PRICE;          //subtract price from amount paid
 }
 
